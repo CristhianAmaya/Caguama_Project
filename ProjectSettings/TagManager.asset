@@ -12,8 +12,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - PlayerMask
+  - BuildingMask
   - 
   - 
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: PlayerMask
+    uniqueID: 953729401
+    locked: 0
+  - name: BuildingMask
+    uniqueID: 2974450935
     locked: 0
