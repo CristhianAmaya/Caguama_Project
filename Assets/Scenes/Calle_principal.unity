@@ -597,7 +597,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.83
+  orthographic size: 15.96
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -622,7 +622,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -72.2, y: 52.1, z: -60}
+  m_LocalPosition: {x: -113, y: 75.9, z: -106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -640,6 +640,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 990dc7f06f78cb64383af3dde1e3bc1d, type: 2}
+    - target: {fileID: 4594893783199317694, guid: 089359775a6e2194fa9d72fb67d0ce78, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3450687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594893783199317694, guid: 089359775a6e2194fa9d72fb67d0ce78, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.015398356
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594893783199317694, guid: 089359775a6e2194fa9d72fb67d0ce78, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9998841
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594893783199317694, guid: 089359775a6e2194fa9d72fb67d0ce78, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.015223497
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594893783199317694, guid: 089359775a6e2194fa9d72fb67d0ce78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -1.745
+      objectReference: {fileID: 0}
     - target: {fileID: 6547806894572888493, guid: 089359775a6e2194fa9d72fb67d0ce78, type: 3}
       propertyPath: m_Name
       value: Escenario

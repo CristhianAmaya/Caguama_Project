@@ -9,9 +9,10 @@ public class PlayerMove : MonoBehaviour
     public Camera mainCamera; // Cámara desde donde se disparará el Raycast
     public float speed = 5f;  // Velocidad a la que el personaje se moverá
     public float rotationSpeed = 10f; // Velocidad de rotación del personaje
-    public Animator animator; // Para colcar las animaciones
+    public Animator animator; // Para aplicar las animaciones
 
     private bool isMoving = false; // Para verificar si el personaje está en movimiento
+    private Quaternion initialCameraRotation; // Rotación inicial de la cámara
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,9 @@ public class PlayerMove : MonoBehaviour
         positionPlayerInitial = transform.position;
         positionPlayerFinal = transform.position;
         animator = GetComponent<Animator>();
+
+        // Guardamos la rotación inicial de la cámara
+        initialCameraRotation = mainCamera.transform.rotation;
     }
 
     // Update is called once per frame
@@ -75,4 +79,13 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
+
+    // LateUpdate se llama después de todos los demás Updates, ideal para actualizar la cámara
+    void LateUpdate()
+    {
+        // Actualizamos la posición de la cámara para que siga al personaje sin cambiar su rotación
+        mainCamera.transform.position = new Vector3(transform.position.x - 100f, transform.position.y + 85f, transform.position.z - 100f);
+        mainCamera.transform.rotation = initialCameraRotation;
+    }
 }
+
