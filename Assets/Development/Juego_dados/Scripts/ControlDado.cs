@@ -9,16 +9,16 @@ public class ControlDado : MonoBehaviour
     private Vector3 posicionInicial; // Posición inicial del dado
     private Rigidbody rbDado; // Componente Rigidbody del dado
     private bool dadoEnMovimiento = true; // Controla si el dado está en movimiento
-    public ControlCara[] lados = new ControlCara[6]; // Array que almacena las 6 caras del dado
+    public ControlCara[] ladosDado = new ControlCara[12];// Array que almacena las 12 caras del dado
     private int valorDado; // Valor de la cara que está hacia arriba
     private int ladoOculto; // Valor de la cara que está contra el suelo
 
     void Start()
     {
-        // Asigna las referencias de cada cara del dado al array `lados`
-        for (int i = 0; i < lados.Length; i++)
+        // Asigna las referencias de cada cara del dado al array `ladosDado`
+        for (int i = 0; i < ladosDado.Length; i++)
         {
-            lados[i] = gameObject.transform.GetChild(i + 6).GetComponent<ControlCara>();
+            ladosDado[i] = gameObject.transform.GetChild(i + ladosDado.Length).GetComponent<ControlCara>();
         }
 
         // Configura la posición inicial y obtiene el Rigidbody del dado
@@ -42,11 +42,11 @@ public class ControlDado : MonoBehaviour
         {
             dadoEnMovimiento = false;
             // Obtiene el lado del dado que toca el suelo y calcula el valor de la cara superior
-            ladoOculto = ComprobarLados();
-            valorDado = lados.Length + 1 - ladoOculto;
+            ladoOculto = ComprobarladosDado();
+            valorDado = ladosDado.Length + 1 - ladoOculto;
 
             // Si el valor es inválido, aplica una fuerza para lanzar de nuevo el dado
-            if (valorDado == lados.Length + 1)
+            if (valorDado == ladosDado.Length + 1)
             {
                 rbDado.AddForce(3f, 0f, 0f, ForceMode.Impulse);
                 dadoEnMovimiento = true;
@@ -83,13 +83,13 @@ public class ControlDado : MonoBehaviour
     }
 
     // Método para determinar cuál cara del dado está tocando el suelo
-    int ComprobarLados()
+    int ComprobarladosDado()
     {
         int valor = 0;
-        for (int i = 0; i < lados.Length; i++)
+        for (int i = 0; i < ladosDado.Length; i++)
         {
             // Comprueba si una cara está tocando el suelo
-            if (lados[i].CompruebaSuelo())
+            if (ladosDado[i].CompruebaSuelo())
             {
                 valor = i + 1; // Ajusta el valor de la cara detectada
             }

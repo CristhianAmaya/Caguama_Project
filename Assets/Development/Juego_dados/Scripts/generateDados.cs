@@ -6,6 +6,7 @@ public class generateDados : MonoBehaviour
 {
     public GameObject dadoPrefab; // Prefab de los dados a instanciar
     public Vector3 initialPosition = new Vector3(); // Posición inicial del primer dado
+    private List<Color> colorsDados = new List<Color>();
     [HideInInspector] public int cantidadDados = 4; // Cantidad total de dados a generar
 
     void Start()
@@ -25,6 +26,11 @@ public class generateDados : MonoBehaviour
             ControlMenu.instancia.namesDados.Add("Inicialize");
         }
 
+        colorsDados = new List<Color>
+        {
+            Color.red, Color.green, Color.blue, Color.yellow
+        };
+
         // Bucle para instanciar y posicionar cada dado
         for (int i = 0; i < cantidadDados; i++)
         {
@@ -32,13 +38,17 @@ public class generateDados : MonoBehaviour
             if (i < cantidadDados - 1)
             {
                 posicionesDado[i + 1] = new Vector3(
-                    posicionesDado[i].x + dadoPrefab.transform.localScale.x / 2 + 1f,
+                    posicionesDado[i].x + 3.5f,
                     posicionesDado[i].y,
                     posicionesDado[i].z
                 );
             }
             // Instancia el dado y lo posiciona en el espacio
             GameObject newDado = Instantiate(dadoPrefab, posicionesDado[i], Quaternion.identity);
+            Renderer renderer_newDado = newDado.GetComponent<Renderer>();
+
+            //Cambiamos el color del dado
+            renderer_newDado.material.color = colorsDados[i];
 
             // Asigna un nombre único al dado basado en su número
             newDado.name = $"Dado_{i + 1}";
