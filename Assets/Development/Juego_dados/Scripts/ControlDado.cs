@@ -37,10 +37,18 @@ public class ControlDado : MonoBehaviour
             PrepararDado();
         }
 
+        // Verifica si el dado ha comenzado a moverse nuevamente
+        if (!dadoEnMovimiento && !rbDado.IsSleeping())
+        {
+            dadoEnMovimiento = true;
+            ControlMenu.instancia.ActualizarValor(gameObject.name, 0); // Envía cero cuando el dado entra en movimiento
+        }
+
         // Detecta si el dado ha terminado de moverse
         if (rbDado.IsSleeping() && dadoEnMovimiento)
         {
             dadoEnMovimiento = false;
+
             // Obtiene el lado del dado que toca el suelo y calcula el valor de la cara superior
             ladoOculto = ComprobarladosDado();
             valorDado = ladosDado.Length + 1 - ladoOculto;
@@ -61,9 +69,13 @@ public class ControlDado : MonoBehaviour
         }
     }
 
+
     // Método para resetear el dado y lanzarlo de nuevo con rotación y fuerza aleatoria
     void PrepararDado()
     {
+        mechanicsDados.instancia.StopAllCoroutines();
+        mechanicsDados.instancia.gradoExito = "null";
+        mechanicsDados.instancia.texto_succesGrades.text = $"Grado de éxito: null";
         transform.position = posicionInicial;
         rbDado.velocity = Vector3.zero;
         ControlMenu.instancia.LimpiarValores();

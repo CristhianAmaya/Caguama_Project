@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class generateDados : MonoBehaviour
 {
+    public static generateDados instancia; // Instancia única de generateDados (Singleton)
     public GameObject dadoPrefab; // Prefab de los dados a instanciar
     public Vector3 initialPosition = new Vector3(); // Posición inicial del primer dado
     private List<Color> colorsDados = new List<Color>();
     [HideInInspector] public int cantidadDados = 4; // Cantidad total de dados a generar
+
+    private void OnEnable()
+    {
+        if (instancia == null)
+        {
+            instancia = this;
+        }
+    }
 
     void Start()
     {

@@ -8,19 +8,16 @@ using static UnityEditor.PlayerSettings;
 public class ControlMenu : MonoBehaviour
 {
     public static ControlMenu instancia; // Instancia única de ControlMenu (Singleton)
-    [HideInInspector] public generateDados generateDados_instance; // Referencia a la instancia de generación de dados
     public List<int> valoresDados; // Lista para almacenar los valores de cada dado
     public List<string> namesDados; // Lista para almacenar los nombres de cada dado
     public TextMeshProUGUI textos; // Elemento de UI para mostrar los valores
 
     void Start()
     {
-        // Se utiliza FindObjectOfType para buscar un objeto que tenga el Script "generateDados"
-        generateDados_instance = FindObjectOfType<generateDados>();
-        valoresDados = new List<int>(generateDados_instance.cantidadDados);
+        valoresDados = new List<int>(generateDados.instancia.cantidadDados);
 
         // Inicializa la lista de valores con ceros para cada dado. Esto se hace para que la lista no genere ningún error
-        for (int i = 0; i < generateDados_instance.cantidadDados; i++)
+        for (int i = 0; i < generateDados.instancia.cantidadDados; i++)
         {
             valoresDados.Add(0);
         }
@@ -37,14 +34,18 @@ public class ControlMenu : MonoBehaviour
     // Actualiza el valor de un dado específico basado en su nombre
     public void ActualizarValor(string nameDadito, int dado)
     {
-        for (int i = 0; i < generateDados_instance.cantidadDados; i++)
+        for (int i = 0; i < generateDados.instancia.cantidadDados; i++)
         {
-            if (namesDados[i] == nameDadito) // Busca el dado por su nombre
+            if (namesDados[i] == nameDadito)
             {
-                valoresDados[i] = dado; // Asigna el valor al índice correcto
+                if (valoresDados[i] == 0 && dado != 0)
+                {
+                    // Incrementa dadosQuietos solo si el valor cambia de cero a un valor distinto de cero
+                    mechanicsDados.instancia.dadosQuietos++;
+                }
+                valoresDados[i] = dado;
             }
         }
-        imprimir();
     }
 
     // Resetea los valores de todos los dados a cero
@@ -54,16 +55,26 @@ public class ControlMenu : MonoBehaviour
         {
             valoresDados[i] = 0;
         }
-        imprimir();
     }
 
     // Imprime los valores de cada dado en el UI
-    private void imprimir()
+    public void imprimir(Dictionary<int, int> valoresIconos)
     {
-        textos.text =
+        // Limpiar el texto antes de agregar nuevo contenido
+        textos.text = "";
+
+        // Agregar información sobre los valores de los dados
+        textos.text +=
             $"Valor dado 1 = {valoresDados[0]}\n" +
             $"Valor dado 2 = {valoresDados[1]}\n" +
             $"Valor dado 3 = {valoresDados[2]}\n" +
-            $"Valor dado 4 = {valoresDados[3]}";
+            $"Valor dado 4 = {valoresDados[3]}\n";
+
+        // Recorrer cada par clave-valor en el diccionario valoresIconos
+        foreach (KeyValuePair<int, int> par in valoresIconos)
+        {
+            // par.Key representa el icono, y par.Value representa la cantidad de veces que aparece
+            textos.text += $"Icono {par.Key} aparece {par.Value} veces\n";
+        }
     }
 }
