@@ -213,8 +213,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baea0742a071eef479d64ad42d7cc08c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dadoPrefab: {fileID: 7458458486899073796, guid: b86acef302ba5854198d7fc72345b33d, type: 3}
+  dadoPrefab: {fileID: 7458458486899073796, guid: 7aac5be521c3a894f94402b2ca72b822, type: 3}
   initialPosition: {x: 7, y: 7, z: 13}
   cantidadDados: 4
 --- !u!4 &976872954
@@ -682,6 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dadosQuietos: 0
   texto_succesGrades: {fileID: 2096314797}
+  gradoExito: 
 --- !u!1 &1277048561
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,8 +946,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
