@@ -44,12 +44,12 @@ public class mechanicsDados : MonoBehaviour
         // Diccionario que asocia cada cara del dado con el icono que representa
         Dictionary<int, int> iconMap = new Dictionary<int, int>
         {
-            { 1, 0 }, { 12, 0 }, // La cara 1 y la cara 12 tienen el mismo icono (índice 0)
-            { 2, 1 }, { 11, 1 }, // La cara 2 y la cara 11 tienen el mismo icono (índice 1)
-            { 3, 2 }, { 10, 2 }, // La cara 3 y la cara 10 tienen el mismo icono (índice 2)
-            { 4, 3 }, { 9, 3 },  // La cara 4 y la cara 9 tienen el mismo icono (índice 3)
-            { 5, 4 }, { 8, 4 },  // La cara 5 y la cara 8 tienen el mismo icono (índice 4)
-            { 6, 5 }, { 7, 5 }   // La cara 6 y la cara 7 tienen el mismo icono (índice 5)
+            { 1, 0 }, { 2, 0 }, // La cara 1 y la cara 2 tienen el mismo icono (índice 0)
+            { 3, 1 }, { 4, 1 }, // La cara 3 y la cara 4 tienen el mismo icono (índice 1)
+            { 5, 2 }, { 6, 2 }, // La cara 5 y la cara 6 tienen el mismo icono (índice 2)
+            { 7, 3 }, { 8, 3 },  // La cara 7 y la cara 8 tienen el mismo icono (índice 3)
+            { 9, 4 }, { 10, 4 },  // La cara 9 y la cara 10 tienen el mismo icono (índice 4)
+            { 11, 5 }, { 12, 5 }   // La cara 11 y la cara 12 tienen el mismo icono (índice 5)
         };
 
         // Diccionario que cuenta cuántas veces aparece cada icono en la tirada de los dados
